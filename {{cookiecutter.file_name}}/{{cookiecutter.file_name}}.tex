@@ -65,6 +65,9 @@
 \usepackage{pdfpages}
 \usepackage{algorithm,algpseudocode}
 
+\usepackage[]{authblk}
+\renewcommand\Affilfont{\itshape\small}
+
 % % bibliography
 % \makeatletter
 % \def\blx@nowarnpolyglossia{}
@@ -94,16 +97,21 @@
 % title block
 \title{{'{' + cookiecutter.title + '}'}}
 
-\usepackage[]{authblk}
-\renewcommand\Affilfont{\itshape\small}
+{%- if cookiecutter.single_author == "yes" %}
+\author{{'{' + cookiecutter.author + '}'}}
+\affil{{'{' + cookiecutter.affiliation + '\\\\' + '\n  ' +
+  '\\href{mailto:' + cookiecutter.email + 
+  '}{\\nolinkurl{' + cookiecutter.email + '}}}'}}
 
-\author{Johan Larsson}
-\affil{The Department of Statistics, Lund University}
+{%- elif cookiecutter.single_author == "no" -%}
 
-%\author[1,*]{Johan Larsson}
-%\affil[1]{Department of Statistics, Lund University}
-%\affil[*]{Corresponding author: %\href{mailto:johan.larsson@stat.lu.se}{\nolinkurl{johan.larsson@stat.lu.se}}}
+\author[1,*]{{'{' + cookiecutter.author + '}'}}
+\affil[1]{{'{' + cookiecutter.affiliation + '}'}}
+\affil[*]{Corresponding author:
+  \href{mailto:{{cookiecutter.email}}}{\nolinkurl{{'{' + cookiecutter.email + '}'}}}
+}
 
+{%- endif %}
 \date{\today}
 
 \begin{document}

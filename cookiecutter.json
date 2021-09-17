@@ -1,9 +1,10 @@
 {
+    "title": "Title",
     "author" : "Johan Larsson",
     "email" : "johan.larsson@stat.lu.se",
-    "title": "Title",
+    "affiliation": "Department of Statistics, Lund University",
+    "single_author" : ["yes", "no"],
     "file_name": "article",
-    "author_affiliation": "Department of Statistics, Lund University",
     "_copy_without_render": [
         "*.pdf",
         "*.bib",
